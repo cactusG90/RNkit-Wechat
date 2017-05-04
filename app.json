@@ -1,0 +1,28 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/login/login",
+    "pages/my/my",
+    "pages/register/register",
+    "pages/forgetPsw/forgetPsw",
+    "pages/changePsw/changePsw",
+    "pages/appList/appList",
+    "pages/appInfo/appInfo",
+    "pages/editApp/editApp",
+    "pages/package/package",
+    "pages/patch/patch"
+    
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "RNkit云服务",
+    "navigationBarTextStyle":"black"
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  }
+}

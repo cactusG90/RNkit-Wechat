@@ -1,0 +1,12 @@
+<!--login.wxml-->
+<view class="login">
+    <view class="password">
+        <text>原密码</text>
+        <input password placeholder="请输入原密码" bindinput="oldPsw" maxlength="20"/>
+    </view>
+    <view class="password">
+        <text>新密码</text>
+        <input password placeholder="请输入新密码" bindinput="newPsw" maxlength="20"/>
+    </view>
+    <button type="primary" bindtap="bindButtonTap" disabled="{{btnDisabled}}" >修改</button>
+</view>

@@ -1,0 +1,21 @@
+<view class="myInfo">
+  <!--头像-->
+  <image class="logo" src="../../img/my2.svg"/>
+  <view class="myMsg">
+    <!--my名称-->
+    <text class="my-name">{{userName}}</text>
+    </view>
+</view>
+<view class='editInfo'>
+  <!-- <navigator url="">绑定邮箱/手机号</navigator> -->
+  <navigator url="../changePsw/changePsw">修改密码</navigator>
+</view>
+<view class="logOut" bindtap="logOut"> 退出账号 </view>
+<view class="footer">
+  <view >
+    <navigator open-type="reLaunch" url="../appList/appList" class="list">应用列表</navigator>
+  </view>
+  <view class="checked">
+    <text class="my">个人中心</text>
+  </view>
+</view>

@@ -1,0 +1,21 @@
+<!--register.wxml-->
+<view class="register">
+    <view class="vCode">
+        <input placeholder="请设置用户名" maxlength="12" bindinput="nameInput"/>
+    </view>
+    <view class="userMobile">
+        <input placeholder="请输入手机号" maxlength="11" type="number" bindinput="userInput"/>
+         <button class='getCodeBtn' style='color:{{getCodeBtnProperty.titileColor}}' type="default" bindtap='getCodeAct' disabled='{{getCodeBtnProperty.disabled}}' loading='{{getCodeBtnProperty.loading}}'>{{getCodeBtnProperty.title}}</button>
+    </view>
+    <view class="vCode">
+        <input placeholder="请输入验证码" type="number" bindinput="codeInput"/>
+    </view>
+    <view class="password">
+        <input password placeholder="请设置密码" bindinput="pswInput" maxlength="20"/>
+    </view>
+    <button type="primary" class="submit" bindtap="bindButtonTap" disabled="{{btnDisabled}}" >立即注册</button>
+    <view class="login">
+      <text>已有账号？</text>
+      <navigator url="../login/login">立即登陆</navigator>
+    </view>
+</view>

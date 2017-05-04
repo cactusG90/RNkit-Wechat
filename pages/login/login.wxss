@@ -1,0 +1,58 @@
+page{
+    background: #f4f4f4;
+    font-size: 14px;
+}
+.login{
+    margin-top:20px;
+}
+.userName, .password{
+  display: flex;
+  background: #fff;
+  padding: 0 25px;
+  border: 1px solid #f5f5f5;
+}
+.userName text,.password text{
+  flex: 1;
+  line-height:45px;
+  text-align:center;
+}
+.login .password text{
+  letter-spacing:10px;
+}
+.userName input, .password input{
+    height: 45px;
+    flex: 4;
+}
+.login .input-placeholder{
+  text-indent: 5px;
+}
+.login .forgetPsw{
+  color: #20a0ff;
+  text-align: right;
+  margin: 10px 25px 0 0;
+}
+button[disabled][type="primary"] {
+background-color:#20a0ff;
+opacity: 0.7;
+}
+.button-hover[type="primary"] {
+  background-color:#20a0ff;
+}
+.login button{
+  margin: 20px 25px 0;
+  background: #20a0ff;
+  letter-spacing:5px;
+  line-height:40px;
+}
+.login .register{
+  background: #f4f4f4;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  margin-top:10px;
+}
+.register navigator{
+  display: inline-block;
+  color: #20a0ff;
+}

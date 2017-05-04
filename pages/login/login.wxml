@@ -1,0 +1,17 @@
+<!--login.wxml-->
+<view class="login">
+    <view class="userName">
+        <text>用户名</text>
+        <input placeholder="请输入手机号或邮箱" class="username" bindinput="userInput"/>
+    </view>
+    <view class="password">
+        <text>密码</text>
+        <input password placeholder="请输入密码" bindinput="pswInput" maxlength="20"/>
+    </view>
+    <navigator url="../forgetPsw/forgetPsw" class="forgetPsw">忘记密码</navigator>
+    <button type="primary" bindtap="bindButtonTap" disabled="{{btnDisabled}}" >登陆</button>
+    <view class="register">
+      <text>还没有账号？</text>
+      <navigator url="../register/register">立即注册</navigator>
+    </view>
+</view>

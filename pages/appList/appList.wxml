@@ -1,0 +1,36 @@
+<!--index.wxml-->
+<view class="container">
+  <view wx:for="{{appInfo}}" class="app" data-key="{{item.key}}" bindtap='appInfo'>
+    <!--app图标-->
+    <image wx:if="{{item.icon}}" class="logo" src="{{item.icon}}" alt="app-logo"/>
+    <image wx:else class="logo" src="../../img/applogo-default.png" alt="app-logo"/>
+    <view class="appMsg">
+      <!--app名称-->
+      <text class="app-name">{{item.name}}</text>
+      <!--app所属平台-->
+      <view wx:if="{{item.platform === 1}}" class="platform">
+        <image src="../../img/iOS.svg"/>
+        <text class="platformTxt">iOS</text>
+      </view>
+      <view wx:if="{{item.platform === 2}}" class="platform">
+        <image src="../../img/Android.svg"/>
+        <text class="platformTxt">Android</text>
+      </view>
+      <!--app最新版本-->
+      <text class="app-version">App最新版本：{{item.app_version || ''}}</text>
+      <!--应用包名-->
+      <text class="app-identifier">应用包名：{{item.app_identifier}}</text>
+    </view>
+  </view>
+  <view wx:if="{{totalPages+1 > currentPage.page}}" class="loadMore"> 
+    <button type="default" bindtap='loadPage'  >加载更多 </button>
+  </view>
+  <view class="footer">
+    <view class="checked list">
+      <text>应用列表</text>
+    </view>
+    <view>
+      <navigator open-type="reLaunch" url="../my/my" class="my">个人中心</navigator>
+    </view>
+  </view>
+</view>

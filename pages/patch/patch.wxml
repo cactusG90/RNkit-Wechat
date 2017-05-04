@@ -1,0 +1,93 @@
+<view class="appInfo">
+  <!--app图标-->
+  <image wx:if="{{appInfo.icon}}" class="logo" src="{{appInfo.icon}}" alt="app-logo"/>
+  <image wx:else class="logo" src="../../img/applogo-default.png" alt="app-logo"/>
+  <view class="appMsg">
+    <!--app名称-->
+    <text class="app-name">{{appInfo.name}}</text>
+    <!--app所属平台-->
+    <view wx:if="{{appInfo.platform === 1}}" class="platform">
+      <text class="platformTxt">iOS</text>
+      <image src="../../img/iOS.svg"/>
+    </view>
+    <view wx:if="{{appInfo.platform === 2}}" class="platform">
+      <text class="platformTxt">Android</text>
+      <image src="../../img/Android.svg"/>
+    </view>
+    <!--app最新版本-->
+    <text class="app-version">App最新版本：{{appInfo.app_version || ''}}</text>
+    <!--应用包名-->
+    <text class="app-identifier">应用包名：{{appInfo.app_identifier}}</text>
+  </view>
+</view>
+<view class="editApp">
+  <view class="editInput">
+    <text>补丁包名称：</text>
+    <input placeholder="请输入package名称" value="{{paramObject.name}}" bindinput="nameInput"/>
+  </view>
+  <!-- 发布类型 -->
+  <view class="editType">
+  <text>发布类型：</text>
+    <radio-group class="radio-group" bindchange="releaseChange">
+      <label class="radio" wx:for="{{releaseRadio}}">
+        <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+      </label>
+    </radio-group>
+  </view>
+  <!-- 灰度下发类型 -->
+  <view wx:if="{{paramObject.release_type == 3}}" class="editInput">
+    <text>灰度下发类型：</text>
+    <radio-group class="radio-group " bindchange="grayChange">
+      <label class="radio" wx:for="{{grayRadio}}">
+        <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+      </label>
+    </radio-group></view>
+    <!-- 设备数 -->
+    <view wx:if="{{paramObject.gray_type == 2 && paramObject.release_type == 3}}" class="editInput">
+      <text class="section__title">灰度设备数：</text>
+      <input placeholder="请输入灰度设备数量" value="{{paramObject.gray_count}}" bindinput="grayCount" type="number"/>
+    </view>
+  <!-- 百分比 -->
+    <view class="section section_gap editPersent" 
+      wx:if="{{paramObject.gray_type == 1 && paramObject.release_type == 3}}">
+      <text class="section__title">灰度百分比：</text>
+      <view class="body-view">
+        <slider bindchange="slider4change" 
+          min="10" max="90" show-value step="10" 
+          value="{{paramObject.gray_percent * 10}}"/>
+      </view>
+    </view>
+  
+  <!-- 条件下发 -->
+  <!-- <view wx:if="{{paramObject.release_type == 4}}">
+    <picker bindchange="bindPickerChange" value="{{index}}" range="{{patchList}}" range-key="name">
+      <view class="picker">
+        <text class="pickerTitle">下发条件</text>
+        <text class="pickerItem">{{patchList[index].name}}</text>
+      </view>
+    </picker>
+  </view> -->
+  <view class="editInput">
+    <text>强制更新：</text>
+    <switch checked="{{(paramObject.is_mandatory == 1 && paramObject.is_silent != 1)? true : false}}" bindchange="switch1Change"/>
+  </view>
+  <view class="editInput">
+    <text>静默更新：</text>
+    <switch checked="{{(paramObject.is_silent == 1 && paramObject.is_mandatory != 1)? true : false}}" bindchange="switch2Change"/>
+  </view>
+  <view class="section editInput">
+  <text class="section__title">发布时间：</text>
+    <picker mode="date" value="{{date}}" start="2007-12-30" end="2027-12-30" bindchange="bindDateChange">
+      <view class="picker">
+        {{date}}
+      </view>
+    </picker>
+  </view>
+  <view class="editInput">
+  <text>更新描述：</text>
+    <textarea bindblur="bindTextAreaBlur" 
+      auto-height placeholder="请输入描述信息" 
+      value="{{paramObject.description}}"/>
+  </view>
+  <button type="primary" disabled="{{btnDisable}}" bindtap="EditTap">修改</button>
+</view>

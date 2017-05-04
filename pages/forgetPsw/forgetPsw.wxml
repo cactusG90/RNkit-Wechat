@@ -1,0 +1,14 @@
+<!--register.wxml-->
+<view class="register">
+    <view class="userMobile">
+        <input placeholder="请输入手机号" maxlength="11" type="number" bindinput="userInput"/>
+         <button class='getCodeBtn' style='color:{{getCodeBtnProperty.titileColor}}' type="default" bindtap='getCodeAct' disabled='{{getCodeBtnProperty.disabled}}' loading='{{getCodeBtnProperty.loading}}'>{{getCodeBtnProperty.title}}</button>
+    </view>
+    <view class="vCode">
+        <input placeholder="请输入验证码" type="number" maxlength="6" bindinput="codeInput"/>
+    </view>
+    <view class="password">
+        <input password placeholder="请输入新密码" bindinput="pswInput" maxlength="20"/>
+    </view>
+    <button type="primary" class="submit" bindtap="bindButtonTap" disabled="{{btnDisabled}}" >重置密码</button>
+</view>

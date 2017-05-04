@@ -1,0 +1,39 @@
+<view class="appInfo">
+  <!--app图标-->
+  <image wx:if="{{appInfo.icon}}" class="logo" src="{{appInfo.icon}}" alt="app-logo"/>
+  <image wx:else class="logo" src="../../img/applogo-default.png" alt="app-logo"/>
+  <view class="appMsg">
+    <!--app名称-->
+    <text class="app-name">{{appInfo.name}}</text>
+    <!--app所属平台-->
+    <view wx:if="{{appInfo.platform === 1}}" class="platform">
+      <text class="platformTxt">iOS</text>
+      <image src="../../img/iOS.svg"/>
+    </view>
+    <view wx:if="{{appInfo.platform === 2}}" class="platform">
+      <text class="platformTxt">Android</text>
+      <image src="../../img/Android.svg"/>
+    </view>
+    <!--app最新版本-->
+    <text class="app-version">App最新版本：{{appInfo.app_version || ''}}</text>
+    <!--应用包名-->
+    <text class="app-identifier">应用包名：{{appInfo.app_identifier}}</text>
+  </view>
+</view>
+<view class="editApp">
+  <view class="editInput">
+    <text>package名：</text>
+    <input placeholder="请输入package名称" value="{{packageName}}" bindinput="nameInput"/>
+  </view>
+  <!-- <view class="editInput">
+    <text>是否启用：</text>
+    <switch checked="{{status == 1? true : false}}" bindchange="switch1Change"/>
+  </view> -->
+  <picker bindchange="bindPickerChange" value="{{index}}" range="{{patchList}}" range-key="name">
+    <view class="picker">
+      <text class="pickerTitle">已选择补丁：</text>
+      <text class="pickerItem">{{patchList[index].name}}</text>
+    </view>
+  </picker>
+  <button type="primary" disabled="{{btnDisable}}" bindtap="EditTap">修改</button>
+</view>

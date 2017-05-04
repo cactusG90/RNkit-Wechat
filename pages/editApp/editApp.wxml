@@ -1,0 +1,40 @@
+<view class="appInfo">
+  <!--app图标-->
+  <image wx:if="{{appInfo.icon}}" class="logo" src="{{appInfo.icon}}" alt="app-logo"/>
+  <image wx:else class="logo" src="../../img/applogo-default.png" alt="app-logo"/>
+  <view class="appMsg">
+    <!--app名称-->
+    <text class="app-name">{{appInfo.name}}</text>
+    <!--app所属平台-->
+    <view wx:if="{{appInfo.platform === 1}}" class="platform">
+      <text class="platformTxt">iOS</text>
+      <image src="../../img/iOS.svg"/>
+    </view>
+    <view wx:if="{{appInfo.platform === 2}}" class="platform">
+      <text class="platformTxt">Android</text>
+      <image src="../../img/Android.svg"/>
+    </view>
+    <!--app最新版本-->
+    <text class="app-version">App最新版本：{{appInfo.app_version || ''}}</text>
+    <!--应用包名-->
+    <text class="app-identifier">应用包名：{{appInfo.app_identifier}}</text>
+  </view>
+</view>
+<view class="editApp">
+  <text> 创建时间：{{appInfo.created_at}}</text>
+  <text> app_key：{{appInfo.key}}</text>
+  <view>
+    <text wx:if="{{appInfo.status == 1}}"> 应用状态：正常</text>
+    <text wx:else> 应用状态：暂停</text>
+  </view>
+  <text>应用包名：{{appInfo.app_identifier}}</text>
+  <view class="editInput">
+    <text>应用名称：</text>
+    <input placeholder="请输入应用名称" value="{{appInfo.name}}" bindinput="nameInput"/>
+  </view>
+  <view class="editInput">
+    <text>下载地址：</text>
+    <input placeholder="请输入下载地址" value="{{appInfo.download_url}}" bindinput="urlInput"/>
+  </view>
+  <button type="primary" disabled="{{btnDisable}}" bindtap="EditTap">修改</button>
+</view>

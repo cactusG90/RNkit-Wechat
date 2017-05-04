@@ -1,0 +1,107 @@
+page{
+  font-size: 14px;
+}
+.appInfo{
+  width: 100%;
+  height: 30vh;
+  overflow: hidden;
+  text-align:center;
+  background: #f4f4f4;
+}
+.appInfo .logo{
+  display: block;
+  width: 50px;
+  height: 30%;
+  margin: 5px auto;
+}
+.appMsg text{
+  display:inline-block;
+  width:100%;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  font-size:14px;
+}
+.appMsg .app-name{
+  font-size: 16px;
+  font-weight: bolder;
+}
+.appMsg .platformTxt{
+  width: initial;
+  vertical-align:middle;
+}
+.appMsg .platform image{
+  width:14px;
+  height:14px;
+  margin-left:5px;
+}
+.editApp{
+  padding:10px;
+}
+.editApp text{
+  display: inline-block;
+  line-height:30px;
+}
+.editApp .editInput, .editApp .editType{
+  display: block;
+  height: inherit;
+  margin-bottom: 20px
+}
+.editApp .editInput{
+  min-height: 30px;
+}
+.editApp .editType, .editApp .editPersent{
+  min-height:50px;
+  margin-bottom:20px;
+}
+.editPersent .section__title{
+  display: block;
+  height: 15px;
+  line-height:20px;
+  margin: -10px 0 15px;
+}
+.editPersent .body-view slider{ 
+  width: 90%;
+  margin: 5%;
+}
+.editApp .editInput text,.editApp .editType text{
+  display: inline-block;
+  float: left;
+}
+.editApp .editInput input, .editInput picker, .editInput textarea {
+  float: left;
+  width: 65%;
+  min-height:30px;
+  padding: 0 5px;
+  border: 1px solid #eee;
+  font-size:15px;
+  line-height: 30px;
+}
+.editApp .picker .pickerItem{
+  width: 65%;
+  padding: 0 5px;
+  border: 1px solid #eee;
+}
+.editType .radio-group{
+  float: left;
+  width: 65%;
+}
+.editType .radio-group .radio{
+  display:inline-block;
+  width: 50%;
+  margin-bottom: 10px;
+}
+.editApp button{
+  width: 85%;
+  margin: 20px auto 0;
+  background: #20a0ff;
+}
+button[disabled][type="primary"] {
+  background-color:#20a0ff;
+  opacity: 0.7
+}
+.button-hover[type="primary"] {
+  background-color:#20a0ff;
+}
+
+

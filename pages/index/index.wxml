@@ -1,0 +1,10 @@
+<!--index.wxml-->
+<view class="container" id="background">
+  <view class="title">
+    <text>RNkit</text>
+    <text>云服务</text>
+  </view>
+  <view class="usermotto" bindtap="bindViewTap" id="content">
+    <navigator url="../login/login" class="user-motto">登陆/注册</navigator>
+  </view>
+</view>

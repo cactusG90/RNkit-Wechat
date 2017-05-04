@@ -1,0 +1,110 @@
+<view class="appInfo">
+  <navigator url="../editApp/editApp"  class="edit">编辑</navigator>
+  <!--app图标-->
+  <image wx:if="{{appInfo.icon}}" class="logo" src="{{appInfo.icon}}" alt="app-logo"/>
+  <image wx:else class="logo" src="../../img/applogo-default.png" alt="app-logo"/>
+  <view class="appMsg">
+    <!--app名称-->
+    <text class="app-name">{{appInfo.name}}</text>
+    <!--app所属平台-->
+    <view wx:if="{{appInfo.platform === 1}}" class="platform">
+      <text class="platformTxt">iOS</text>
+      <image src="../../img/iOS.svg"/>
+    </view>
+    <view wx:if="{{appInfo.platform === 2}}" class="platform">
+      <text class="platformTxt">Android</text>
+      <image src="../../img/Android.svg"/>
+    </view>
+    <!--app最新版本-->
+    <text class="app-version">App最新版本：{{appInfo.app_version || ''}}</text>
+    <!--应用包名-->
+    <text class="app-identifier">应用包名：{{appInfo.app_identifier}}</text>
+  </view>
+</view>
+<view class="titles">
+  <!--绑定事件处理函数bindtap-->
+  <!--给选中的组件，即数组当前项的下标与selectedTitle相等的组件，样式名titles-selected-->
+  <block wx:for="{{titles}}">
+    <view id="{{index}}" bindtap="bindtap" class="title {{index==selectedTitle ? 'title-selected' : ''}}">
+      {{item}}
+    </view>
+  </block>
+</view>
+<!--绑定事件处理函数bindchange-->
+<swiper bindchange="bindChange" current='{{selectedTitle}}'>
+  <!--package列表-->
+  <block >
+    <swiper-item>
+      <!-- 暂无package -->
+      <block wx:if="{{packageList == ''}}">
+        <view class='empty' >
+          <image class="logo" src="../../img/empty.png" alt="empty-logo"/>
+          <text>暂无package</text>
+        </view>
+      </block>
+      <!-- package列表 -->
+      <block wx:else>
+        <view class='page package' wx:for="{{packageList}}">
+          <view wx:for="{{item.version}}" wx:for-item="patch"
+          bindtap="packageTap" 
+          data-name="{{item.name}}" 
+          data-packageKey="{{item.key}}"
+          data-status="{{item.status}}"
+          data-patchKey="{{patch.key}}"
+          data-patchName="{{patch.name}}">
+            <view class="package_item">
+              <text class="packageName">{{item.name}}</text>
+              <view class="package_msg">
+                <text class="app_version">版本：{{item.app_version}}</text>
+                <text class="package_time">{{item.created_at}}</text>
+              </view>
+            </view>
+            <view class="package_patch">
+              <text class="patchName">{{patch.name}}</text>
+              <text class="patchTime">发布时间：{{patch.release_time}}</text>
+              <text class="type_tag" wx:if="{{patch.release_type === 1}}">开发预览</text>
+              <text class="type_tag" wx:if="{{patch.release_type === 2}}">全量下发</text>
+              <text class="type_tag" wx:if="{{patch.release_type === 3}}">灰度发布</text>
+              <text class="type_tag" wx:if="{{patch.release_type === 4}}">条件下发</text>
+              <text class="type_tag" wx:if="{{patch.is_mandatory === 1}}">强制更新</text>
+              <text class="type_tag" wx:if="{{patch.is_silent === 1}}">静默更新</text>
+            </view>
+          </view>
+        </view>
+      </block>
+      <!-- <view wx:else>12121212121</view> -->
+    </swiper-item>
+  </block>
+  <!--补丁包列表-->
+  <block >
+    <swiper-item>
+      <!-- 暂无补丁包 -->
+      <view class='empty' wx:if="{{patchList == ''}}">
+        <image class="logo" src="../../img/empty.png" alt="empty-logo"/>
+        <text>暂无补丁包</text>
+      </view>
+      <!-- 补丁包列表 -->
+      <view class='page patch' 
+        wx:for="{{patchList}}" 
+        data-patchKey="{{item.key}}"
+        bindtap="patchTap">
+
+        <text class="patchName">{{item.name}}</text>
+        <view class="patch_item">
+          <text class="patch_create">创建时间：{{item.created_at}}</text>
+          <text class="patch_release">发布时间：{{item.release_time}}</text>
+          <view wx:for="{{item.package}}" wx:for-item="package">
+            绑定package名称：{{package.name}}
+          </view>
+          <text class="type_tag" wx:if="{{item.release_type === 1}}">开发预览</text>
+          <text class="type_tag" wx:if="{{item.release_type === 2}}">全量下发</text>
+          <text class="type_tag" wx:if="{{item.release_type === 3}}">灰度发布</text>
+          <text class="type_tag" wx:if="{{item.release_type === 4}}">条件下发</text>
+          <text class="type_tag" wx:if="{{item.is_mandatory === 1}}">强制更新</text>
+          <text class="type_tag" wx:if="{{item.is_silent === 1}}">静默更新</text>
+          
+        </view>
+      </view>
+    </swiper-item>
+  </block>
+</swiper>
